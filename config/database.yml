@@ -18,6 +18,6 @@ test:
 
 production:
   <<: *default
-  database: protospace_テックマスターのuser_id5_production
-  username: protospace_テックマスターのuser_id5
-  password: <%= ENV["PROTOSPACE_テックマスターのUSER_ID5_DATABASE_PASSWORD"] %>
+  database: protospace-40764_production
+  username: protospace-40764
+  password: <%= ENV["PROTOSPACE-40764_DATABASE_PASSWORD"] %>
