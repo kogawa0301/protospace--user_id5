@@ -4,7 +4,7 @@ class PrototypesController < ApplicationController
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
-    @prototypes = Prototype.includes(:user)
+     @prototypes = Prototype.includes(:user)
   end
 
   def new
@@ -13,11 +13,11 @@ class PrototypesController < ApplicationController
 
   def create
     @prototype = Prototype.new(prototype_params)
-    if @prototype.save
-      redirect_to root_path
-    else
-      render :new, status: :unprocessable_entity
-    end
+      if @prototype.save
+        redirect_to root_path
+       else
+        render :new, status: :unprocessable_entity
+      end
   end
 
   def show
@@ -26,14 +26,15 @@ class PrototypesController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
-    if @prototype.update(prototype_params)
+   if @prototype.update(prototype_params)
       redirect_to prototype_path(@prototype)
-    else
+  else
       render :edit, status: :unprocessable_entity
-    end
+   end
   end
 
   def destroy
@@ -43,18 +44,16 @@ class PrototypesController < ApplicationController
       redirect_to root_path
     end
   end
-
   private
-
   def prototype_params
-    params.require(:prototype).permit(:title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
+      params.require(:prototype).permit(:title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
   end
 
   def set_prototype
-    @prototype = Prototype.find(params[:id])
+     @prototype = Prototype.find(params[:id])
   end
 
   def contributor_confirmation
-    redirect_to root_path unless current_user == @prototype.user
+      redirect_to root_path unless current_user == @prototype.user
   end
 end
