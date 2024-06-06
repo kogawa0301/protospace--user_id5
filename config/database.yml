@@ -8,12 +8,12 @@ default: &default
 
 development:
   <<: *default
-  database: protospace-40764_development
+  database: protospace_テックマスターのuser_id5_development
 
 
 test:
   <<: *default
-  database: protospace-40764_test
+  database: protospace_テックマスターのuser_id5_test
 
 
 production:
